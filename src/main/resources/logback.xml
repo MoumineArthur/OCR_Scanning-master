@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+        <timeZone>UTC</timeZone>
+    </encoder>
+</appender>
+<logger name="com.odmarth.idocrapp" level="INFO" additivity="false">
+    <appender-ref ref="consoleAppender" />
+</logger>
+<root level="ERROR">
+    <appender-ref ref="consoleAppender" />
+</root>
+</configuration>

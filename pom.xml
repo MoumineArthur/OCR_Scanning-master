@@ -1,0 +1,145 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>odmarth-id-ocr-app</groupId>
+  <artifactId>com.odmarth.idocrapp</artifactId>
+  <version>1.0</version>
+  <name>OCR READER</name>
+  
+  <distributionManagement>
+	<repository>
+	<id>sa-nexus-releases</id>
+	<name>sa-nexus-releases</name>
+	<url>http://192.168.2.118:8081/nexus/content/repositories/sa-nexus-releases</url>
+	</repository>
+	<snapshotRepository>
+	<id>sa-nexus-snapshots</id>
+	<name>sa-nexus-snapshots</name>
+	<url>http://192.168.2.118:8081/nexus/content/repositories/sa-nexus-snapshots</url>
+	</snapshotRepository>
+	</distributionManagement>
+	
+<!--  <repositories>-->
+<!--	<repository>-->
+<!--        <id>AsposeJavaAPI</id>-->
+<!--        <url>https://repository.aspose.com/repo/</url>-->
+<!--        <releases>-->
+<!--            <enabled>true</enabled>-->
+<!--        </releases>-->
+<!--        <snapshots>-->
+<!--            <enabled>true</enabled>-->
+<!--        </snapshots>-->
+<!--    </repository>-->
+<!--  </repositories>-->
+
+  <dependencies>
+		<dependency>
+		    <groupId>net.sourceforge.tess4j</groupId>
+		    <artifactId>tess4j</artifactId>
+		    <version>5.13.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-core</artifactId>
+		    <version>1.4.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>net.logstash.logback</groupId>
+		    <artifactId>logstash-logback-encoder</artifactId>
+		    <version>7.1.1</version>
+		</dependency>
+		
+		<!--<dependency>
+		    <groupId>com.github.downgoon</groupId>
+		    <artifactId>marvin</artifactId>
+		    <version>1.5.5</version>
+		    <type>pom</type>
+		</dependency>
+		
+		<dependency>
+		  <groupId>com.github.downgoon</groupId>
+		  <artifactId>MarvinPlugins</artifactId>
+		  <version>1.5.5</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>com.github.downgoon</groupId>
+		  <artifactId>MarvinFramework</artifactId>
+		  <version>1.5.5</version>
+		</dependency>-->
+		
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>5.3.22</version>
+		</dependency>
+        
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
+		</dependency>
+     
+		<dependency>
+		    <groupId>com.drewnoakes</groupId>
+		    <artifactId>metadata-extractor</artifactId>
+		    <version>2.6.2</version>
+		</dependency>
+		
+     
+  </dependencies>
+  
+  <build>
+		<finalName>com.odmarth.idocrapp-${project.version}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+                <exclude>**/*.traineddata</exclude>
+                <exclude>**/*.ttf</exclude>
+            </excludes>
+			</resource>
+		</resources>
+		<plugins>
+			
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-compiler-plugin</artifactId>
+		    <version>3.1</version>
+		    <configuration>
+		        <source>1.8</source>
+		        <target>1.8</target>
+		    </configuration>
+		</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<tagNameFormat>com.odmarth.idocrapp-${project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<finalName>com.odmarth.idocrapp-${ws-version}</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptor>src/main/assembly/generate-ws-zip.xml</descriptor>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>none</phase>
+						<goals>
+							<goal>assembly</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
