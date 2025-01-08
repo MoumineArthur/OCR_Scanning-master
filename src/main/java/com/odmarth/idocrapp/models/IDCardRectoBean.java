@@ -1,8 +1,8 @@
 package com.odmarth.idocrapp.models;
 
-import lombok.Data;
+import lombok.ToString;
 
-@Data
+@ToString
 public class IDCardRectoBean {
 
 	private String nip;
@@ -98,6 +98,5 @@ public class IDCardRectoBean {
 		this.nationality = nationality;
 	}
 	
-	
-	
+
 }

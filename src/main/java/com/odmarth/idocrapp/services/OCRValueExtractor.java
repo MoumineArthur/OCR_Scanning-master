@@ -6,11 +6,11 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.odmarth.idocrapp.models.IDCardRectoBean;
 import com.odmarth.idocrapp.models.IDCardVersoBean;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -39,6 +39,27 @@ public class OCRValueExtractor {
         }
         return "";
     }
+
+//    public String informationStartBy(String input, String startChar) {
+//        try {
+//            int start = input.indexOf(startChar);
+//            if (start != -1) {
+//                int end = input.indexOf(start + startChar.length());
+//                if (end != -1) {
+//                    return input.substring(start + startChar.length());
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return "";
+//        }
+//        return "";
+//    }
+
+//    public Integer getPieceType(String text) {
+//
+//        return 1;
+//    }
 
     public String informationRetrievalBetweenTwChar(String str, String firtsChar, String endChar) {
         String strd;
