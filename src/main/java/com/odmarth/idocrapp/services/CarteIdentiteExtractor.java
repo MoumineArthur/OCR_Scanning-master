@@ -129,13 +129,6 @@ public class CarteIdentiteExtractor {
         String normalizedText = normalizeText(ocrText);
         String[] lines = normalizedText.split("\\R");
         
-        //System.out.println("LINENNE : : "+ lines.length);
-//        if (normalizedText.toLowerCase().contains("spor") || normalizedText.toLowerCase().contains("sepor")) {
-//    		/// Extract PASSPORT DATA
-//        	extractedData.put("type", "PASSEPORT");
-//    	}else {
-//    		extractedData.put("type", "CNIB");
-//    	}
         extractedData.put("type", "CNIB");
         for(String ligne: lines) {
         	Pattern idPattern = Pattern.compile("\\b([A-Z]\\d{8})\\b");
@@ -195,27 +188,7 @@ public class CarteIdentiteExtractor {
             if (ligne.toLowerCase().contains("urkina")) {
             	extractedData.put("nationalite", "BURKINABE");
             }
-            
-            /*if(ligne.toLowerCase().contains("delivree") || ligne.toLowerCase().contains("livrée le") || ligne.toLowerCase().contains("livr") 
-            		|| ligne.toLowerCase().contains("vrance") || ligne.toLowerCase().contains("Date of issue")) {
-            	//System.out.println("datedelivrance: "+ ligne);
-            	  Matcher issueDateMatcher = DATE_REG_PATTERN.matcher(ligne);
-            	  if (issueDateMatcher.find()) {
-                      extractedData.put("datedelivrance", issueDateMatcher.group(1).trim());
-                  }
-            }*/
-          /*  if (issueDateMatcher.find()) {
-            	System.out.println("datedelivrance: "+ ligne);
-               // extractedData.put("datedelivrance", issueDateMatcher.group(1).trim());
-            }*/
-            
-            // Expression régulière pour la date d'expiration
-            /*Pattern expiryDatePattern = Pattern.compile("(?i)EXPIRE[:\\s]+(\\d{2}/\\d{2}/\\d{4})");
-            Matcher expiryDateMatcher = expiryDatePattern.matcher(ligne);
-            if (expiryDateMatcher.find()) {
-                extractedData.put("dateexpiration", expiryDateMatcher.group(1).trim());
-            }*/
-            
+           
             Pattern expiryDatePattern = Pattern.compile("(?i)(expirat|expiry\\s*le|expir|vrance|ire\\s+le)[^\\d]*\\s*(\\d{2}/\\d{2}/\\d{4})");
             Matcher expiryDateMatcher = expiryDatePattern.matcher(ligne);
             if (expiryDateMatcher.find()) {
@@ -228,7 +201,8 @@ public class CarteIdentiteExtractor {
             }
             
         }
-        
+        extractedData.put("autorite", "ONI OUAGA");
+        extractedData.put("lieuemission", "OUAGA");
         return extractedData;
     }
 

@@ -44,7 +44,7 @@ public class ODMArthOcrScanning {
 			
 			IDCardRectoBean rectoBean = OCRDataExtractor.extractRectoBean(rectoText);
 			
-			System.out.println("RECTO bean \n" + rectoBean.getFirstName());
+			System.out.println("RECTO bean \n" + rectoBean.getNip());
 			
 			System.out.println("======================================================");
 //			

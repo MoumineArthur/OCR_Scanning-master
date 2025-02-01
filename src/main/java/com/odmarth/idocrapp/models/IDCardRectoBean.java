@@ -6,6 +6,7 @@ import lombok.ToString;
 public class IDCardRectoBean {
 
 	private String nip;
+	private String cardType;
 	private String cardNumber;
 	private String firstName;
 	private String lastName;
@@ -24,6 +25,13 @@ public class IDCardRectoBean {
 	}
 	public void setNip(String nip) {
 		this.nip = nip;
+	}
+	
+	public String getCardType() {
+		return cardType;
+	}
+	public void setCardType(String cardType) {
+		this.cardType = cardType;
 	}
 	public String getCardNumber() {
 		return cardNumber;

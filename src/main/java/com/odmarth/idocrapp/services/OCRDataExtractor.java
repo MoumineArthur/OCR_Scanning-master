@@ -31,7 +31,7 @@ public class OCRDataExtractor {
 			idCardRectoBean.setNationality(map.get("nationalite"));
 			idCardRectoBean.setGender(map.get("sexe"));
 			idCardRectoBean.setAutority(map.get("autorite"));
-
+			idCardRectoBean.setCardType(map.get("type"));
 
 			return idCardRectoBean;
 		}
