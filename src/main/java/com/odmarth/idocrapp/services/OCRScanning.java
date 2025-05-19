@@ -33,7 +33,7 @@ public class OCRScanning {
 		//return tesseract.doOCR(processImageResolution(imageToRead));
 		return tesseract.doOCR(imageToRead);
 	}
-	 public static BufferedImage changeImageResolution(File inputFile) throws IOException {
+	/* public static BufferedImage changeImageResolution(File inputFile) throws IOException {
 		  int targetDPI =300;
 	        try (FileInputStream inputStream = new FileInputStream(inputFile)) {
 	            BufferedImage image = ImageIO.read(inputStream);
@@ -60,7 +60,8 @@ public class OCRScanning {
 	            return resizedImage;
 	        }
 	    }
-	private  static BufferedImage processImageResolution(File orignalImage) throws IOException {
+	*/
+/*private  static BufferedImage processImageResolution(File orignalImage) throws IOException {
 		BufferedImage image = ImageIO.read(orignalImage);
         
         int targetDPI = 500; 
@@ -83,5 +84,5 @@ public class OCRScanning {
       //  ImageIO.write(resizedImage, "jpg", outputImageFile);
         
         return resizedImage;
-	}
+	}*/
 }
